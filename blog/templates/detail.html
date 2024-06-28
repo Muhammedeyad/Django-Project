@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../../../my installer/bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    
+    
+</head>
+<body >
+    <header class="p-3 bg-dark text-white">
+        <div class="row">
+            <div class="col">
+               <a class="text-decoration-none text-light" href="./index.html"><h3>Blog</h3></a> 
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-center gap-3">
+                    <a class="text-light text-decoration-none" href="">Home</a>
+                    <a class="text-light text-decoration-none" href="">About</a>
+                    <a class="text-light text-decoration-none" href="">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid ">
+       
+        <div class="row">
+            <div class="col-lg-8">
+              <h1 class="mb-4">{{posts.title}} {{posts.id}}</h1>
+              <p class="text-muted">Posted on January 1, 2024</p>
+              <img src="https://via.placeholder.com/800x400" class="img-fluid mb-4" alt="Blog Image">
+              <p>{{posts.content}}</p>
+             
+            </div>
+            <div class="col-lg-4">
+              <div class="card mt-3">
+                <div class="card-body">
+                  <h5 class="card-title">Related Posts</h5>
+                  <ul class="list-unstyled">
+                    <li><a href="./detail.html">Post 1</a></li>
+                    <li><a href="./detail.html">Post 2</a></li>
+                    <li><a href="./detail.html">Post 3</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-dark text-light p-3 fixed-bottom">
+        <div class="col-4 d-flex justify-content-center align-items-center">
+          <span class="text-light">© 2021 Company, Inc</span>
+        </div>
+    </footer>
+    <script src="../../../../my installer/bootstrap-3.4.1-dist/js/jquery.min.js"></script>
+</body>
+</html>
