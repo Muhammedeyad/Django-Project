@@ -7,6 +7,8 @@ from django.core.management.base import BaseCommand
 class Command(BaseCommand):
     help="this command is used to insert values to blog"
     def handle(self, *args, **options):
+            post.objects.all().delete()
+            
             titles = [
                 'Full Stack ',
                 "Web Development",
