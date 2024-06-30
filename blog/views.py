@@ -21,7 +21,7 @@ def index(request):
     page_number= request.GET.get("page")
     page_obj = page.get_page(page_number)
 
-    return render(request, 'index.html', {"post_obj": page_obj})
+    return render(request, 'index.html', {"page_obj": page_obj})
 
 
 def detail(request, slug):
