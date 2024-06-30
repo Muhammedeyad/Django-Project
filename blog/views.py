@@ -4,6 +4,7 @@ from django.urls import reverse
 import logging
 from blog.models import post
 from django.http import Http404
+from django.core.paginator import Paginator
 # appName = [
 #         {'id':1, 'names': 'post1', 'content': 'viewing post one'},
 #         {'id':2, 'names': 'post2', 'content': 'viewing post two'},
@@ -14,8 +15,14 @@ from django.http import Http404
 
 # Create your views here.
 def index(request):
-    appName = post.objects.all()
-    return render(request, 'index.html', {"postItem": appName})
+    allpost = post.objects.all()
+    page = Paginator(allpost, 3)
+    # request object gives the page num
+    page_number= request.GET.get("page")
+    page_obj = page.get_page(page_number)
+
+    return render(request, 'index.html', {"post_obj": page_obj})
+
 
 def detail(request, slug):
     try:
