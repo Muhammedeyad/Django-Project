@@ -1,7 +1,7 @@
 
-from blog.models import post
+from blog.models import post, Category
 from django.core.management.base import BaseCommand
-
+import random
 
 
 class Command(BaseCommand):
@@ -29,8 +29,9 @@ class Command(BaseCommand):
                 'Data Scientist is a About data structure',
                 'Data Analysist is also called About data structure',
                 ]
-
+            value = Category.objects.all()
             for title, content in zip(titles, contents):
-                post.objects.create(title=title, content=content)
+                catagory = random.choice(value)
+                post.objects.create(title=title, content=content, catagory = catagory)
 
             self.stdout.write(self.style.SUCCESS("Data Inserted"))

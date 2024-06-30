@@ -17,11 +17,13 @@ def index(request):
     appName = post.objects.all()
     return render(request, 'index.html', {"postItem": appName})
 
-def detail(request, post_id):
+def detail(request, slug):
     try:
-        items = post.objects.get(pk=post_id)
+        items = post.objects.get(slug=slug)
+        relatedpost=  post.objects.filter(catagory= items.catagory).exclude(pk=items.id)
+        
     except post.DoesNotExist:
         raise Http404("POST ENOUGH FOUND ERROR")
     # items = next((item for item in appName if item['id'] == int(post_id)), "None")
-    return render(request, 'detail.html', {'posts': items})
+    return render(request, 'detail.html', {'posts': items, 'relatedpost': relatedpost})
 
