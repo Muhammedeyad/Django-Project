@@ -5,6 +5,8 @@ import logging
 from blog.models import post
 from django.http import Http404
 from django.core.paginator import Paginator
+from .forms import ContactForms
+
 # appName = [
 #         {'id':1, 'names': 'post1', 'content': 'viewing post one'},
 #         {'id':2, 'names': 'post2', 'content': 'viewing post two'},
@@ -34,3 +36,11 @@ def detail(request, slug):
     # items = next((item for item in appName if item['id'] == int(post_id)), "None")
     return render(request, 'detail.html', {'posts': items, 'relatedpost': relatedpost})
 
+def contact(request):
+    if request.method == "POST":
+        form = ContactForms(request.POST) 
+        if form.is_valid():
+            form.save()
+            logger = logging.getLogger("TESTING")
+            logger.debug("your form valid is {} {}".format(form.cleaned_data['name'], form.cleaned_data['email']))
+    return render(request, 'contact.html')
