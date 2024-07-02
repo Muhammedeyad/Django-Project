@@ -12,4 +12,4 @@ class ContactForms(forms.ModelForm):
 
     # name = forms.CharField(label='Name', required=True)
     # email = forms.EmailField(label='Email', required=True)
-    # message = forms.CharField(label='Message', required=True)
+   
