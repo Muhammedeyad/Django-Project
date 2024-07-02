@@ -2,5 +2,9 @@ body{
     background-color: lightblue;
 }
 h2{
-    color: red;
+    color: blue;
+}
+.post_container{
+    display: grid;
+    grid-template-columns: repeat(1fr, 3);
 }

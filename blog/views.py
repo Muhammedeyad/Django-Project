@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse
 import logging
-from blog.models import post
+from blog.models import post, Bikes
 from django.http import Http404
 from django.core.paginator import Paginator
 from .forms import ContactForms
@@ -39,8 +39,19 @@ def detail(request, slug):
 def contact(request):
     if request.method == "POST":
         form = ContactForms(request.POST) 
+        logger = logging.getLogger("TESTING")
+        name= request.POST.get('name')
+        email= request.POST.get('email')
+        message= request.POST.get('message') 
         if form.is_valid():
-            form.save()
-            logger = logging.getLogger("TESTING")
+            success_msg= "Your Form Validation is Sent"
             logger.debug("your form valid is {} {}".format(form.cleaned_data['name'], form.cleaned_data['email']))
+            return render(request, 'contact.html' ,{'forms': form, 'success_msg': success_msg})
+        else:
+            logger.debug("your validations failed")
+            return render(request, 'contact.html', {'forms': form, 'name': name, 'email': email, 'message': message})
     return render(request, 'contact.html')
+
+def about(request):
+    content = Bikes.objects.first().content
+    return render(request, 'about.html', {'content': content})
