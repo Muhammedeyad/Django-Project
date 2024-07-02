@@ -29,3 +29,7 @@ class post(models.Model):
 class Bikes(models.Model):
     content = models.TextField()
 
+class MyModel(models.Model):
+    name = models.CharField(max_length= 100, blank=False)
+    email = models.EmailField(blank=False)
+    message = models.TextField(blank=False)

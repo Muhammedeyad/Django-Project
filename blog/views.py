@@ -44,6 +44,7 @@ def contact(request):
         email= request.POST.get('email')
         message= request.POST.get('message') 
         if form.is_valid():
+            form.save()
             success_msg= "Your Form Validation is Sent"
             logger.debug("your form valid is {} {}".format(form.cleaned_data['name'], form.cleaned_data['email']))
             return render(request, 'contact.html' ,{'forms': form, 'success_msg': success_msg})
